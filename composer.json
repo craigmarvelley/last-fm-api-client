@@ -1,0 +1,19 @@
+{
+    "name": "marvelley/lastfm-api",
+    "type": "library",
+    "description": "last.fm API",
+    "keywords": ["Guzzle"],
+    "authors": [
+        {
+            "name": "Craig Marvelley",
+            "email": "craig.marvelley@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "guzzle/guzzle": "*"
+    },
+    "autoload": {
+        "psr-0": { "Marvelley\\Lastfm\\Api": "src/" }
+    }
+}

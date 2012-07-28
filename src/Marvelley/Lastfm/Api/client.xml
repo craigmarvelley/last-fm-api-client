@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<client>
+    <commands>
+        <command name="abstract_unauthenticated">
+            <param name="format" type="string" location="query" />
+        </command>
+        <command name="tasteometer.compare" uri="?api_key={api_key}" extends="abstract_unauthenticated">
+            <param name="method" type="string" required="true" default="tasteometer.compare" location="query" />
+            <param name="type1" type="string" required="true" location="query" default="user" />
+            <param name="type2" type="string" required="true" location="query" default="user" />
+            <param name="value1" type="string" required="true" location="query" />
+            <param name="value2" type="string" required="true" location="query" />
+        </command>
+    </commands>
+</client>
