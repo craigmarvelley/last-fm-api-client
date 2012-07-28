@@ -1,7 +1,7 @@
 {
     "name": "marvelley/lastfm-api",
     "type": "library",
-    "description": "last.fm API",
+    "description": "A last.fm API client",
     "keywords": ["Guzzle"],
     "authors": [
         {
