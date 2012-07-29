@@ -4,16 +4,20 @@
         <command name="abstract_unauthenticated" method="GET">
             <param name="format" type="string" location="query" />
         </command>
-        <command name="album.getBuyLinks" uri="?api_key={api_key}" extends="abstract_unauthenticated">
-            <param name="method" type="string" required="true" default="album.getbuylinks" location="query" />
+        <command name="album.getBuyLinks" uri="?api_key={api_key}&amp;method=album.getbuylinks" extends="abstract_unauthenticated">
             <param name="artist" type="string" location="query" />
             <param name="album" type="string" location="query" />
             <param name="mbid" type="string" location="query" />
-            <param name="autocorrect" type="enum:0,1" location="query" />
+            <param name="autocorrect" type="enum:0,1" location="query" doc="Transform misspelled artist names into correct artist names, returning the correct version instead. The corrected artist name will be returned in the response." />
             <param name="country" type="string" location="query" />
         </command>
-        <command name="tasteometer.compare" uri="?api_key={api_key}" extends="abstract_unauthenticated">
-            <param name="method" type="string" required="true" default="tasteometer.compare" location="query" />
+        <command name="artist.getSimilar" uri="?api_key={api_key}&amp;method=artist.getsimilar" extends="abstract_unauthenticated">
+            <param name="limit" type="integer" location="query" doc="Limit the number of similar artists returned" />
+            <param name="artist" type="string" location="query" doc="The artist name. Required unless mbid." />
+            <param name="autocorrect" type="enum:0,1" location="query" doc="Transform misspelled artist names into correct artist names, returning the correct version instead. The corrected artist name will be returned in the response." />
+            <param name="mbid" type="string" location="query" doc="The musicbrainz id for the artist" />
+        </command>
+        <command name="tasteometer.compare" uri="?api_key={api_key}&amp;method=tasteometer.compare" extends="abstract_unauthenticated">
             <param name="type1" type="string" required="true" location="query" default="user" />
             <param name="type2" type="string" required="true" location="query" default="user" />
             <param name="value1" type="string" required="true" location="query" />
