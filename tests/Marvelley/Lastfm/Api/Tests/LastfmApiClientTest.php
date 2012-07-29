@@ -9,7 +9,7 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
     public function setUp()
     {
         // Ensure we don't hit the API more than 5 times a second
-        usleep(300);
+        usleep(300000);
     }
     
     public function testGetBuyLinks()
@@ -22,6 +22,21 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
             'artist' => 'radiohead',
             'album' => 'in rainbows',
             'country' => 'united kingdom'
+        ));
+        
+        $response = $client->execute($command);
+        
+        $this->assertInstanceOf('SimpleXMLElement', $response);
+    }
+    
+    public function testArtistGetInfo()
+    {
+        $client = LastfmApiClient::factory(array(
+            'api_key' => 'b25b959554ed76058ac220b7b2e0a026'
+        ));
+        
+        $command = $client->getCommand('artist.getInfo', array(
+            'artist' => 'cher'
         ));
         
         $response = $client->execute($command);
