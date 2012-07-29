@@ -44,6 +44,21 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
         $this->assertInstanceOf('SimpleXMLElement', $response);
     }
     
+    public function testArtistGetTopTags()
+    {
+        $client = LastfmApiClient::factory(array(
+            'api_key' => 'b25b959554ed76058ac220b7b2e0a026'
+        ));
+        
+        $command = $client->getCommand('artist.getTopTags', array(
+            'artist' => 'cher'
+        ));
+        
+        $response = $client->execute($command);
+        
+        $this->assertInstanceOf('SimpleXMLElement', $response);
+    }
+    
     public function testTasteometerCompare()
     {
         $client = LastfmApiClient::factory(array(
@@ -54,6 +69,21 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
             'type2' => 'artists',
             'value1' => 'truedawn',
             'value2' => 'metallica'
+        ));
+        
+        $response = $client->execute($command);
+        
+        $this->assertInstanceOf('SimpleXMLElement', $response);
+    }
+    
+    public function testUserGetTopTags()
+    {
+        $client = LastfmApiClient::factory(array(
+            'api_key' => 'b25b959554ed76058ac220b7b2e0a026'
+        ));
+        
+        $command = $client->getCommand('user.getTopTags', array(
+            'user' => 'RJ'
         ));
         
         $response = $client->execute($command);
