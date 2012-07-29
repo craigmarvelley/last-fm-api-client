@@ -4,6 +4,14 @@
         <command name="abstract_unauthenticated" method="GET">
             <param name="format" type="string" location="query" />
         </command>
+        <command name="album.getBuyLinks" uri="?api_key={api_key}" extends="abstract_unauthenticated">
+            <param name="method" type="string" required="true" default="album.getbuylinks" location="query" />
+            <param name="artist" type="string" location="query" />
+            <param name="album" type="string" location="query" />
+            <param name="mbid" type="string" location="query" />
+            <param name="autocorrect" type="enum:0,1" location="query" />
+            <param name="country" type="string" location="query" />
+        </command>
         <command name="tasteometer.compare" uri="?api_key={api_key}" extends="abstract_unauthenticated">
             <param name="method" type="string" required="true" default="tasteometer.compare" location="query" />
             <param name="type1" type="string" required="true" location="query" default="user" />
