@@ -19,5 +19,7 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
         ));
         
         $response = $client->execute($command);
+        
+        $this->assertInstanceOf('SimpleXMLElement', $response);
     }
 }

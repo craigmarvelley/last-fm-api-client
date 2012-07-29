@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <client>
     <commands>
-        <command name="abstract_unauthenticated">
+        <command name="abstract_unauthenticated" method="GET">
             <param name="format" type="string" location="query" />
         </command>
         <command name="tasteometer.compare" uri="?api_key={api_key}" extends="abstract_unauthenticated">
