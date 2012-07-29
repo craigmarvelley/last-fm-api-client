@@ -12,7 +12,7 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
         usleep(300000);
     }
     
-    public function testGetBuyLinks()
+    public function testAlbumGetBuyLinks()
     {
         $client = LastfmApiClient::factory(array(
             'api_key' => 'b25b959554ed76058ac220b7b2e0a026'
@@ -22,6 +22,22 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
             'artist' => 'radiohead',
             'album' => 'in rainbows',
             'country' => 'united kingdom'
+        ));
+        
+        $response = $client->execute($command);
+        
+        $this->assertInstanceOf('SimpleXMLElement', $response);
+    }
+    
+    public function testAlbumGetInfo()
+    {
+        $client = LastfmApiClient::factory(array(
+            'api_key' => 'b25b959554ed76058ac220b7b2e0a026'
+        ));
+        
+        $command = $client->getCommand('album.getInfo', array(
+            'artist' => 'cher',
+            'album' => 'believe'
         ));
         
         $response = $client->execute($command);

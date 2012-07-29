@@ -11,6 +11,14 @@
             <param name="autocorrect" type="enum:0,1" location="query" doc="Transform misspelled artist names into correct artist names, returning the correct version instead. The corrected artist name will be returned in the response." />
             <param name="country" type="string" location="query" />
         </command>
+        <command name="album.getInfo" uri="?api_key={api_key}&amp;method=album.getinfo" extends="abstract_unauthenticated">
+            <param name="artist" type="string" location="query" doc="The artist name. Required unless mbid." />
+            <param name="album" type="string" location="query" doc="The album name." />
+            <param name="mbid" type="string" location="query" doc="The musicbrainz id for the artist." />
+            <param name="autocorrect" type="enum:0,1" location="query" doc="Transform misspelled artist names into correct artist names, returning the correct version instead. The corrected artist name will be returned in the response." />
+            <param name="username" type="string" location="query" doc="The username for the context of the request. If supplied, the user's playcount for this artist is included in the response." />
+            <param name="lang" type="string" location="query" doc="The language to return the biography in, expressed as an ISO 639 alpha-2 code." />            
+        </command>
         <command name="artist.getInfo" uri="?api_key={api_key}&amp;method=artist.getinfo" extends="abstract_unauthenticated">
             <param name="artist" type="string" location="query" doc="The artist name. Required unless mbid." />
             <param name="autocorrect" type="enum:0,1" location="query" doc="Transform misspelled artist names into correct artist names, returning the correct version instead. The corrected artist name will be returned in the response." />
