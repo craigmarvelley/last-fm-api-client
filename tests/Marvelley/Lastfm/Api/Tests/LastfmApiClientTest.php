@@ -45,6 +45,22 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
         $this->assertInstanceOf('SimpleXMLElement', $response);
     }
     
+    public function testAlbumGetShouts()
+    {
+        $client = LastfmApiClient::factory(array(
+            'api_key' => 'b25b959554ed76058ac220b7b2e0a026'
+        ));
+        
+        $command = $client->getCommand('album.getShouts', array(
+            'artist' => 'cher',
+            'album' => 'believe'
+        ));
+        
+        $response = $client->execute($command);
+        
+        $this->assertInstanceOf('SimpleXMLElement', $response);
+    }
+    
     public function testArtistGetInfo()
     {
         $client = LastfmApiClient::factory(array(
