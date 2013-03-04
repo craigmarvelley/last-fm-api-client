@@ -1,0 +1,310 @@
+{
+    "operations": {
+        "_abstract_unauthenticated": {
+            "httpMethod": "GET",
+            "parameters": {
+                "api_key": {
+                    "location": "query",
+                    "type": "string"
+                },
+                "method": {
+                    "location": "query",
+                    "type": "string",
+                    "required": true
+                },
+                "format": {
+                    "location": "query",
+                    "type": "string"
+                }
+            }
+        },
+        "_abstract_album_common": {
+            "extends": "_abstract_unauthenticated",
+            "artist": {
+                "location": "query",
+                "type": "string",
+                "description": "The artist name. Required unless mbid."
+            },
+            "album": {
+                "location": "query",
+                "type": "string",
+                "description": "The album name. Required unless mbid."
+            },
+            "mbid": {
+                "location": "query",
+                "type": "string",
+                "description": "The musicbrainz id for the album."
+            }
+        },
+        "album.getBuyLinks": {
+            "extends": "_abstract_album_common",
+            "parameters": {
+                "method": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "album.getbuylinks",
+                    "static": true
+                },
+                "autocorrect": {
+                    "location": "query",
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Transform misspelled artist names into correct artist names, returning the correct version instead. The corrected artist name will be returned in the response."
+                },
+                "country": {
+                    "location": "query",
+                    "type": "string",
+                    "description": "A country name, as defined by the ISO 3166-1 country names standard."
+                }
+            }
+        },
+        "album.getInfo": {
+            "extends": "_abstract_album_common",
+            "parameters": {
+                "method": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "album.getinfo",
+                    "static": true
+                },
+                "autocorrect": {
+                    "location": "query",
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Transform misspelled artist names into correct artist names, returning the correct version instead. The corrected artist name will be returned in the response."
+                },
+                "username": {
+                    "location": "query",
+                    "type": "string",
+                    "description": "The username for the context of the request. If supplied, the user's playcount for this artist is included in the response."
+                },
+                "lang": {
+                    "location": "query",
+                    "type": "string",
+                    "description": "The language to return the biography in, expressed as an ISO 639 alpha-2 code."
+                }
+            }
+        },
+        "album.getShouts": {
+            "extends": "_abstract_album_common",
+            "parameters": {
+                "method": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "album.getshouts",
+                    "static": true
+                },
+                "autocorrect": {
+                    "location": "query",
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Transform misspelled artist names into correct artist names, returning the correct version instead. The corrected artist name will be returned in the response."
+                },
+                "limit": {
+                    "location": "query",
+                    "type": "integer",
+                    "description": "The number of results to fetch per page. Defaults to 50."
+                },
+                "page": {
+                    "location": "query",
+                    "type": "integer",
+                    "description": "The page number to fetch. Defaults to first page."
+                }
+            }
+        },
+        "album.getTags": {
+            "extends": "_abstract_album_common",
+            "parameters": {
+                "method": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "album.getTags",
+                    "static": true
+                },
+                "autocorrect": {
+                    "location": "query",
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Transform misspelled artist names into correct artist names, returning the correct version instead. The corrected artist name will be returned in the response."
+                },
+                "user": {
+                    "location": "query",
+                    "type": "string",
+                    "description": "If called in non-authenticated mode you must specify the user to look up."
+                }
+            }
+        },
+        "album.getTopTags": {
+            "extends": "_abstract_album_common",
+            "parameters": {
+                "method": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "album.getTopTags",
+                    "static": true
+                },
+                "autocorrect": {
+                    "location": "query",
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Transform misspelled artist names into correct artist names, returning the correct version instead. The corrected artist name will be returned in the response."
+                }
+            }
+        },
+        "album.search": {
+            "extends": "_abstract_unauthenticated",
+            "parameters": {
+                "method": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "album.search",
+                    "static": true
+                },
+                "limit": {
+                    "location": "query",
+                    "type": "integer",
+                    "description": "The number of results to fetch per page. Defaults to 30."
+                },
+                "page": {
+                    "location": "query",
+                    "type": "integer",
+                    "description": "The page number to fetch. Defaults to first page."
+                },
+                "album": {
+                    "location": "query",
+                    "type": "string",
+                    "description": "The album name.",
+                    "required": true
+                }
+            }
+        },
+        "_abstract_artist_common": {
+            "extends": "_abstract_unauthenticated",
+            "httpMethod": "GET",
+            "artist": {
+                "location": "query",
+                "type": "string",
+                "description": "The artist name."
+            },
+            "autocorrect": {
+                "location": "query",
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Transform misspelled artist names into correct artist names, returning the correct version instead. The corrected artist name will be returned in the response."
+            },
+            "mbid": {
+                "location": "query",
+                "type": "string",
+                "description": "The musicbrainz id for the album."
+            }
+        },
+        "artist.getInfo": {
+            "extends": "_abstract_artist_common",
+            "parameters": {
+                "method": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "artist.getInfo",
+                    "static": true
+                },
+                "lang": {
+                    "location": "query",
+                    "type": "string",
+                    "description": "The language to return the biography in, expressed as an ISO 639 alpha-2 code."
+                },
+                "username": {
+                    "location": "query",
+                    "type": "string",
+                    "description": "The username for the context of the request. If supplied, the user's playcount for this artist is included in the response."
+                }
+            }
+        },
+        "artist.getSimilar": {
+            "extends": "_abstract_artist_common",
+            "parameters": {
+                "method": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "artist.getSimilar",
+                    "static": true
+                },
+                "limit": {
+                    "location": "query",
+                    "type": "integer",
+                    "description": "Limit the number of similar artists returned."
+                }
+            }
+        },
+        "artist.getTopTags": {
+            "extends": "_abstract_artist_common",
+            "parameters": {
+                "method": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "artist.getTopTags",
+                    "static": true
+                }
+            }
+        },
+        "tasteometer.compare": {
+            "extends": "_abstract_unauthenticated",
+            "parameters": {
+                "method": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "tasteometer.compare",
+                    "static": true
+                },
+                "type1": {
+                    "location": "query",
+                    "type": "string",
+                    "required": true,
+                    "description": "'user' | 'artists'"
+                },
+                "type2": {
+                    "location": "query",
+                    "type": "string",
+                    "required": true,
+                    "description": "'user' | 'artists'"
+                },
+                "value1": {
+                    "location": "query",
+                    "type": "string",
+                    "description": "[Last.fm username] | [Comma-separated artist names (max. 100)]"
+                },
+                "value2": {
+                    "location": "query",
+                    "type": "string",
+                    "description": "[Last.fm username] | [Comma-separated artist names (max. 100)]"
+                }
+            }
+        },
+        "user.getTopTags": {
+            "extends": "_abstract_unauthenticated",
+            "parameters": {
+                "method": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "user.getTopTags",
+                    "static": true
+                },
+                "user": {
+                    "location": "query",
+                    "type": "string",
+                    "description": "The user name."
+                },
+                "limit": {
+                    "location": "query",
+                    "type": "integer",
+                    "description": "Limit the number of tags returned."
+                }
+            }
+        }
+    }
+}

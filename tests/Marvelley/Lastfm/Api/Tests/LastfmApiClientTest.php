@@ -6,6 +6,15 @@ use Marvelley\Lastfm\Api\LastfmApiClient;
 
 class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
 {
+    private function getClient()
+    {
+        $client = LastfmApiClient::factory(array(
+            'api_key' => 'b25b959554ed76058ac220b7b2e0a026'
+        ));
+
+        return $client;
+    }
+
     public function setUp()
     {
         // Ensure we don't hit the API more than 5 times a second
@@ -14,9 +23,7 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
     
     public function testAlbumGetBuyLinks()
     {
-        $client = LastfmApiClient::factory(array(
-            'api_key' => 'b25b959554ed76058ac220b7b2e0a026'
-        ));
+        $client = $this->getClient();
         
         $command = $client->getCommand('album.getBuyLinks', array(
             'artist' => 'radiohead',
@@ -31,9 +38,7 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
     
     public function testAlbumGetInfo()
     {
-        $client = LastfmApiClient::factory(array(
-            'api_key' => 'b25b959554ed76058ac220b7b2e0a026'
-        ));
+        $client = $this->getClient();
         
         $command = $client->getCommand('album.getInfo', array(
             'artist' => 'cher',
@@ -47,9 +52,7 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
     
     public function testAlbumGetShouts()
     {
-        $client = LastfmApiClient::factory(array(
-            'api_key' => 'b25b959554ed76058ac220b7b2e0a026'
-        ));
+        $client = $this->getClient();
         
         $command = $client->getCommand('album.getShouts', array(
             'artist' => 'cher',
@@ -63,9 +66,7 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
     
     public function testAlbumGetTags()
     {
-        $client = LastfmApiClient::factory(array(
-            'api_key' => 'b25b959554ed76058ac220b7b2e0a026'
-        ));
+        $client = $this->getClient();
         
         $command = $client->getCommand('album.getTags', array(
             'artist' => 'cher',
@@ -80,9 +81,7 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
     
     public function testAlbumGetTopTags()
     {
-        $client = LastfmApiClient::factory(array(
-            'api_key' => 'b25b959554ed76058ac220b7b2e0a026'
-        ));
+        $client = $this->getClient();
         
         $command = $client->getCommand('album.getTopTags', array(
             'artist' => 'cher',
@@ -96,9 +95,7 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
     
     public function testAlbumSearch()
     {
-        $client = LastfmApiClient::factory(array(
-            'api_key' => 'b25b959554ed76058ac220b7b2e0a026'
-        ));
+        $client = $this->getClient();
         
         $command = $client->getCommand('album.search', array(
             'album' => 'believe'
@@ -111,9 +108,7 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
     
     public function testArtistGetInfo()
     {
-        $client = LastfmApiClient::factory(array(
-            'api_key' => 'b25b959554ed76058ac220b7b2e0a026'
-        ));
+        $client = $this->getClient();
         
         $command = $client->getCommand('artist.getInfo', array(
             'artist' => 'cher'
@@ -126,9 +121,7 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
     
     public function testArtistGetSimilar()
     {
-        $client = LastfmApiClient::factory(array(
-            'api_key' => 'b25b959554ed76058ac220b7b2e0a026'
-        ));
+        $client = $this->getClient();
         
         $command = $client->getCommand('artist.getSimilar', array(
             'artist' => 'cher'
@@ -141,9 +134,7 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
     
     public function testArtistGetTopTags()
     {
-        $client = LastfmApiClient::factory(array(
-            'api_key' => 'b25b959554ed76058ac220b7b2e0a026'
-        ));
+        $client = $this->getClient();
         
         $command = $client->getCommand('artist.getTopTags', array(
             'artist' => 'cher'
@@ -156,11 +147,10 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
     
     public function testTasteometerCompare()
     {
-        $client = LastfmApiClient::factory(array(
-            'api_key' => 'b25b959554ed76058ac220b7b2e0a026'
-        ));
+        $client = $this->getClient();
         
         $command = $client->getCommand('tasteometer.compare', array(
+            'type1' => 'user',
             'type2' => 'artists',
             'value1' => 'truedawn',
             'value2' => 'metallica'
@@ -173,9 +163,7 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
     
     public function testUserGetTopTags()
     {
-        $client = LastfmApiClient::factory(array(
-            'api_key' => 'b25b959554ed76058ac220b7b2e0a026'
-        ));
+        $client = $this->getClient();
         
         $command = $client->getCommand('user.getTopTags', array(
             'user' => 'RJ'
