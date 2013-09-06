@@ -105,7 +105,24 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
         
         $this->assertInstanceOf('SimpleXMLElement', $response);
     }
-    
+
+    public function testArtistGetCorrection()
+    {
+        $client = $this->getClient();
+
+        $command = $client->getCommand('artist.getCorrection', array(
+            'artist' => 'guns n roses'
+        ));
+
+        $response = $client->execute($command);
+
+        $this->assertInstanceOf('SimpleXMLElement', $response);
+
+        $this->assertGreaterThan(0, $response->corrections->count());
+        $this->assertGreaterThan(0, $response->corrections->correction->count());
+        $this->assertEquals("Guns N' Roses", (string)$response->corrections->correction[0]->artist->name);
+    }
+
     public function testArtistGetInfo()
     {
         $client = $this->getClient();

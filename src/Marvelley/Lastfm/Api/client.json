@@ -208,6 +208,22 @@
                 }
             }
         },
+        "artist.getCorrection": {
+            "extends": "_abstract_artist_common",
+            "parameters": {
+                "method": {
+                    "location": "query",
+                    "type": "string",
+                    "default": "artist.getCorrection",
+                    "static": true
+                },
+                "artist": {
+                    "location": "query",
+                    "type": "string",
+                    "description": "The artist name to correct."
+                }
+            }
+        },
         "artist.getInfo": {
             "extends": "_abstract_artist_common",
             "parameters": {
