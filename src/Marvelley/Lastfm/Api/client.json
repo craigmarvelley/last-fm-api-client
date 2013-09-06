@@ -20,20 +20,22 @@
         },
         "_abstract_album_common": {
             "extends": "_abstract_unauthenticated",
-            "artist": {
-                "location": "query",
-                "type": "string",
-                "description": "The artist name. Required unless mbid."
-            },
-            "album": {
-                "location": "query",
-                "type": "string",
-                "description": "The album name. Required unless mbid."
-            },
-            "mbid": {
-                "location": "query",
-                "type": "string",
-                "description": "The musicbrainz id for the album."
+            "parameters": {
+                "artist": {
+                    "location": "query",
+                    "type": "string",
+                    "description": "The artist name. Required unless mbid."
+                },
+                "album": {
+                    "location": "query",
+                    "type": "string",
+                    "description": "The album name. Required unless mbid."
+                },
+                "mbid": {
+                    "location": "query",
+                    "type": "string",
+                    "description": "The musicbrainz id for the album."
+                }
             }
         },
         "album.getBuyLinks": {
@@ -186,22 +188,24 @@
         "_abstract_artist_common": {
             "extends": "_abstract_unauthenticated",
             "httpMethod": "GET",
-            "artist": {
-                "location": "query",
-                "type": "string",
-                "description": "The artist name."
-            },
-            "autocorrect": {
-                "location": "query",
-                "type": "integer",
-                "minimum": 0,
-                "maximum": 1,
-                "description": "Transform misspelled artist names into correct artist names, returning the correct version instead. The corrected artist name will be returned in the response."
-            },
-            "mbid": {
-                "location": "query",
-                "type": "string",
-                "description": "The musicbrainz id for the album."
+            "parameters": {
+                "artist": {
+                    "location": "query",
+                    "type": "string",
+                    "description": "The artist name."
+                },
+                "autocorrect": {
+                    "location": "query",
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Transform misspelled artist names into correct artist names, returning the correct version instead. The corrected artist name will be returned in the response."
+                },
+                "mbid": {
+                    "location": "query",
+                    "type": "string",
+                    "description": "The musicbrainz id for the album."
+                }
             }
         },
         "artist.getInfo": {
