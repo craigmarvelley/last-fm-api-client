@@ -8,8 +8,14 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
 {
     private function getClient()
     {
+        $apiKey = getenv('LAST_FM_PHP_CLIENT_API_KEY');
+
+        if (!$apiKey) {
+            $this->fail('API key not set');
+        }
+
         $client = LastfmApiClient::factory(array(
-            'api_key' => 'b25b959554ed76058ac220b7b2e0a026'
+            'api_key' => $apiKey
         ));
 
         return $client;
