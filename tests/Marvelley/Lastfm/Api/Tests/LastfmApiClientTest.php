@@ -38,8 +38,9 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
         ));
         
         $response = $client->execute($command);
-        
+
         $this->assertInstanceOf('SimpleXMLElement', $response);
+        $this->assertEquals('ok', (string) $response->attributes()->status);
     }
     
     public function testAlbumGetInfo()
@@ -54,6 +55,7 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
         $response = $client->execute($command);
         
         $this->assertInstanceOf('SimpleXMLElement', $response);
+        $this->assertEquals('ok', (string) $response->attributes()->status);
     }
     
     public function testAlbumGetShouts()
@@ -68,6 +70,7 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
         $response = $client->execute($command);
         
         $this->assertInstanceOf('SimpleXMLElement', $response);
+        $this->assertEquals('ok', (string) $response->attributes()->status);
     }
     
     public function testAlbumGetTags()
@@ -83,6 +86,7 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
         $response = $client->execute($command);
         
         $this->assertInstanceOf('SimpleXMLElement', $response);
+        $this->assertEquals('ok', (string) $response->attributes()->status);
     }
     
     public function testAlbumGetTopTags()
@@ -97,6 +101,7 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
         $response = $client->execute($command);
         
         $this->assertInstanceOf('SimpleXMLElement', $response);
+        $this->assertEquals('ok', (string) $response->attributes()->status);
     }
     
     public function testAlbumSearch()
@@ -110,6 +115,7 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
         $response = $client->execute($command);
         
         $this->assertInstanceOf('SimpleXMLElement', $response);
+        $this->assertEquals('ok', (string) $response->attributes()->status);
     }
 
     public function testArtistGetCorrection()
@@ -123,6 +129,7 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
         $response = $client->execute($command);
 
         $this->assertInstanceOf('SimpleXMLElement', $response);
+        $this->assertEquals('ok', (string) $response->attributes()->status);
 
         $this->assertGreaterThan(0, $response->corrections->count());
         $this->assertGreaterThan(0, $response->corrections->correction->count());
@@ -140,6 +147,7 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
         $response = $client->execute($command);
         
         $this->assertInstanceOf('SimpleXMLElement', $response);
+        $this->assertEquals('ok', (string) $response->attributes()->status);
     }
     
     public function testArtistGetSimilar()
@@ -153,6 +161,7 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
         $response = $client->execute($command);
         
         $this->assertInstanceOf('SimpleXMLElement', $response);
+        $this->assertEquals('ok', (string) $response->attributes()->status);
     }
     
     public function testArtistGetTopTags()
@@ -166,6 +175,7 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
         $response = $client->execute($command);
         
         $this->assertInstanceOf('SimpleXMLElement', $response);
+        $this->assertEquals('ok', (string) $response->attributes()->status);
     }
     
     public function testTasteometerCompare()
@@ -182,6 +192,7 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
         $response = $client->execute($command);
         
         $this->assertInstanceOf('SimpleXMLElement', $response);
+        $this->assertEquals('ok', (string) $response->attributes()->status);
     }
     
     public function testUserGetTopTags()
@@ -195,5 +206,6 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
         $response = $client->execute($command);
         
         $this->assertInstanceOf('SimpleXMLElement', $response);
+        $this->assertEquals('ok', (string) $response->attributes()->status);
     }
 }
