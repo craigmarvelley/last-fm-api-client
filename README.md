@@ -32,3 +32,21 @@ foreach($result['artist']['similar']['artist'] as $artist) {
 
 [1]: http://guzzlephp.org/
 [2]: http://last.fm/api
+
+## Running integration tests
+
+Before running the test suite you need to configure a specific environment variable with a valid last.fm API key. For example, from your terminal:
+
+```
+$ export LAST_FM_PHP_CLIENT_API_KEY=your_api_key
+```
+
+or add a similar entry to your bash/zsh/whatever config file.
+
+You can then run the test suite via:
+
+```
+$ phpunit
+```
+
+from the root of the project directory (assuming you have PHPUnit installed and on the path).
