@@ -177,6 +177,97 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
         $this->assertInstanceOf('SimpleXMLElement', $response);
         $this->assertEquals('ok', (string) $response->attributes()->status);
     }
+
+    public function testTrackGetBuyLinks()
+    {
+        $client = $this->getClient();
+        
+        $command = $client->getCommand('track.getBuyLinks', array(
+            'artist' => 'cher',
+            'track'  => 'believe',
+            'country' => 'united kingdom'
+        ));
+        
+        $response = $client->execute($command);
+        
+        $this->assertInstanceOf('SimpleXMLElement', $response);
+        $this->assertEquals('ok', (string) $response->attributes()->status);
+    }
+
+    public function testTrackGetInfo()
+    {
+        $client = $this->getClient();
+        
+        $command = $client->getCommand('track.getInfo', array(
+            'artist' => 'cher',
+            'track'  => 'believe'
+        ));
+        
+        $response = $client->execute($command);
+        
+        $this->assertInstanceOf('SimpleXMLElement', $response);
+        $this->assertEquals('ok', (string) $response->attributes()->status);
+    }
+
+    public function testTrackGetShouts()
+    {
+        $client = $this->getClient();
+        
+        $command = $client->getCommand('track.getShouts', array(
+            'artist' => 'cher',
+            'track' => 'believe'
+        ));
+        
+        $response = $client->execute($command);
+        
+        $this->assertInstanceOf('SimpleXMLElement', $response);
+        $this->assertEquals('ok', (string) $response->attributes()->status);
+    }
+
+    public function testTrackGetTags()
+    {
+        $client = $this->getClient();
+        
+        $command = $client->getCommand('track.getTags', array(
+            'artist' => 'cher',
+            'track' => 'believe',
+            'user' => 'RJ'
+        ));
+        
+        $response = $client->execute($command);
+        
+        $this->assertInstanceOf('SimpleXMLElement', $response);
+        $this->assertEquals('ok', (string) $response->attributes()->status);
+    }
+
+    public function testTrackGetTopTags()
+    {
+        $client = $this->getClient();
+        
+        $command = $client->getCommand('track.getTopTags', array(
+            'artist' => 'cher',
+            'track' => 'believe'
+        ));
+        
+        $response = $client->execute($command);
+        
+        $this->assertInstanceOf('SimpleXMLElement', $response);
+        $this->assertEquals('ok', (string) $response->attributes()->status);
+    }
+
+    public function testTrackSearch()
+    {
+        $client = $this->getClient();
+        
+        $command = $client->getCommand('track.search', array(
+            'track' => 'believe'
+        ));
+        
+        $response = $client->execute($command);
+        
+        $this->assertInstanceOf('SimpleXMLElement', $response);
+        $this->assertEquals('ok', (string) $response->attributes()->status);
+    }
     
     public function testTasteometerCompare()
     {
