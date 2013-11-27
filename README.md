@@ -3,6 +3,8 @@
 This is a client for the last.fm API. It uses the [Guzzle][1] web service library.
 The client API is a custom web service client based on `Guzzle\Service\Client`.
 
+[![Build Status](https://travis-ci.org/craigmarvelley/last-fm-api-client.png?branch=master)](https://travis-ci.org/craigmarvelley/last-fm-api-client)
+
 ## Installation
 Use composer to install the library and all its dependencies:
 
