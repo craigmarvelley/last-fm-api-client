@@ -269,6 +269,22 @@ class LastfmApiClientTest extends \Guzzle\Tests\GuzzleTestCase
         $this->assertEquals('ok', (string) $response->attributes()->status);
     }
     
+    public function testTrackGetSimilar()
+    {
+    	  $client = $this->getClient();
+        
+    	  $command = $client->getCommand('track.getSimilar', array(
+            'track' => 'believe',
+            'artist' => 'cher',
+            'limit' => 10
+        ));
+      
+    	  $response = $client->execute($command);
+      
+        $this->assertInstanceOf('SimpleXMLElement', $response);
+        $this->assertEquals('ok', (string) $response->attributes()->status);
+    }    
+    
     public function testTasteometerCompare()
     {
         $client = $this->getClient();
